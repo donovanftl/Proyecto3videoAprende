@@ -135,10 +135,53 @@ function uploadAvatar(req, res) {
     };
 }
 
+function getAvatar(req, res) {
+  const avatarName = req.params.avatarName;
+  const filePath = '../uploads/avatar' + avatarName;
+
+  fs.exists(filePath, (exists) => {
+    if (!exist) {
+      res.status(404).send({ message: 'El avatar que buscas no existe' });
+    } else {
+      res.sendFile(path.resolve(filePath));
+    }
+  });
+}
+
+async function updateUser(req, res) {
+  let userData = req.body;
+  userData.email = req.body.email.toLowerCase;
+  const params = req.params;
+
+  if (userData.password) {
+    await bcrypt.hash(userData.password, null, null, (err, hash) => {
+      if (err) {
+        res.status(500).send({ message: 'Error al encriptar la contraseña' });
+      } else {
+        userData.password = hash;
+      }
+    });
+  }
+
+  User.findByIdAndUpdate({ _id: params.id }, userData, (err, userUpdate) => {
+    if (err) {
+      res.status(500).send({ message: 'Error del servidor' });
+    } else {
+      if (!userUpdate) {
+        res.status(404).send({ message: 'No se ha encontrado el usuario' });
+      } else {
+        res.status(200).send({ message: 'Usuario actualizado correctamente.' });
+      }
+    }
+  });
+}
+
 module.exports = {
   signUp,
   signIn,
   getUsers,
   getUsersActive,
   uploadAvatar,
+  getAvatar,
+  updateUser,
 };

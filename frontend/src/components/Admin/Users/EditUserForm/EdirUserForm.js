@@ -4,6 +4,7 @@ import { useDropzone } from 'react-dropzone';
 import NoAvatar from '../../../../assets/img/png/no-avatar.png';
 import { updateUserApi, uploadAvatarApi, getAvatarApi } from '../../../../api/user';
 import { getAccessTokenApi } from '../../../../api/auth';
+import { getAvatarApi } from '../../../../api/user';
 
 import './EditUserForm.scss';
 
@@ -136,7 +137,7 @@ function UploadAvatar(props) {
 
 function EditForm(props) {
   const { userData, setUserData, updateUser } = props;
-  const { Option } = Select;
+  const { Option } = Select;  
 
   return (
     <Form className="form-edit" onSubmit={updateUser}>
