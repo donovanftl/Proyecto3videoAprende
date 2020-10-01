@@ -176,6 +176,77 @@ async function updateUser(req, res) {
   });
 }
 
+function activateUser(req, res) {
+  const { id } = req.params;
+  const { active } = req.params;
+
+  User.findByIdAndUpdate(id, { active }, () => {
+    if (err) {
+      res.status(500).send((message: 'Error del servidor'));
+    } else {
+      if (!userStored) {
+        res.status(404).send({ message: 'No se ha encontrado el ususario' });
+      } else {
+        if (active === true) {
+          res.status(200).send({ message: 'Usuario activado' });
+        } else {
+          res.status(200).send({ message: 'Usuario desactivado' });
+        }
+      }
+    }
+  });
+}
+
+function deleteUser(req, res) {
+  const { id } = req.params;
+
+  User.findByIdAndRemove(id, (err, userDeleted) => {
+    if (err) {
+      res.status(500).send({ message: 'Error del servidor' });
+    } else {
+      if (!userDeleted) {
+        res.status(404).send({ message: 'Ususario no encontrado' });
+      } else {
+        res.status(200).send({ message: 'El usuario ha sido eliminado correctamente' });
+      }
+    }
+  });
+}
+
+function signUpAdmin(req, res) {
+  const user = new User();
+
+  const { name, lastname, email, role, password } = req.body;
+  user.name = name;
+  user.lastname = lastname;
+  user.email = email.toLowerCase();
+  user.role = role;
+  user.active = true;
+
+  if (!password) {
+    res.status(500).send((message: 'La contraseña es obligatoria.'));
+  } else {
+    bcrypt.hash(password, null, null, (err, hash) => {
+      if (err) {
+        res.status(500).send({ message: 'Error al encriptar la contraseña' });
+      } else {
+        user.password = hash;
+        user.save((err, userStored) => {
+          if (err) {
+            res.status(500).send({ message: 'El usuario ya existe' });
+          } else {
+            if (!userStored) {
+              res.status(500).send({ message: 'Error al crear un nuevo usuario.' });
+            } else {
+              res.status(200).send([(user: userStored)]);
+            }
+          }
+        });
+      }
+    });
+  }
+}
+
 module.exports = {
   signUp,
   signIn,
@@ -184,4 +255,7 @@ module.exports = {
   uploadAvatar,
   getAvatar,
   updateUser,
+  activateUser,
+  deleteUser,
+  signUpAdmin,
 };
