@@ -1,67 +1,73 @@
 // Layout
-import LayoutAdmin from "../layouts/LayoutAdmin";
-import LayoutBasic from "../layouts/LayoutBasic";
+import LayoutAdmin from '../layouts/LayoutAdmin';
+import LayoutBasic from '../layouts/LayoutBasic';
 
 // Admin Pages
-import AdminHome from "../pages/Admin";
-import AdminSingIn from "../pages/Admin/SignIn";
-import AdminUsers from "../pages/Admin/Users"
+import AdminHome from '../pages/Admin';
+import AdminSingIn from '../pages/Admin/SignIn';
+import AdminUsers from '../pages/Admin/Users';
+import AdminMenuWeb from '../pages/Admin/MenuWeb';
 
 // Pages
-import Home from "../pages/Home";
-import Contact from "../pages/Contact";
-import Courses from "../pages/Courses";
+import Home from '../pages/Home';
+import Contact from '../pages/Contact';
+import Courses from '../pages/Courses';
 
 // Other
-import Error404 from "../pages/Error404";
+import Error404 from '../pages/Error404';
 
 const routes = [
   {
-    path: "/admin",
+    path: '/admin',
     component: LayoutAdmin,
     exact: false,
     routes: [
       {
-        path: "/admin",
+        path: '/admin',
         component: AdminHome,
-        exact: true
+        exact: true,
       },
       {
-        path: "/admin/login",
+        path: '/admin/login',
         component: AdminSingIn,
-        exact: true
+        exact: true,
       },
       {
-        path: "/admin/users",
+        path: '/admin/users',
         component: AdminUsers,
-        exact: true
+        exact: true,
       },
       {
-        component: Error404
-      }
-    ]
+        path: 'admin/menu',
+        component: AdminMenuWeb,
+        exact: true,
+      },
+      {
+        component: Error404,
+      },
+    ],
   },
   {
-    path: "/",
+    path: '/',
     component: LayoutBasic,
     exact: false,
     routes: [
       {
-        path: "/",
+        path: '/',
         component: Home,
-        exact: true
+        exact: true,
       },
       {
-        path: "/contact",
+        path: '/contact',
         component: Contact,
-        exact: true
+        exact: true,
       },
 
       {
-        component: Error404
-      }
-    ]
-  }
+        component: Error404,
+      },
+    ],
+  },
 ];
 
 export default routes;
