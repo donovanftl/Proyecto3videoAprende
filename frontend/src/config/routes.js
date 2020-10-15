@@ -7,6 +7,7 @@ import AdminHome from '../pages/Admin';
 import AdminSingIn from '../pages/Admin/SignIn';
 import AdminUsers from '../pages/Admin/Users';
 import AdminMenuWeb from '../pages/Admin/MenuWeb';
+import AdminCourses from '../pages/Admin/Courses'
 
 // Pages
 import Home from '../pages/Home';
@@ -45,6 +46,11 @@ const routes = [
       {
         component: Error404,
       },
+      {
+        path: '/admin/courses'
+        component: AdminCourses,
+        exact: true
+      }
     ],
   },
   {
@@ -62,7 +68,11 @@ const routes = [
         component: Contact,
         exact: true,
       },
-
+      {
+        path="/courses",
+        component: Courses,
+        exact: true
+      }
       {
         component: Error404,
       },

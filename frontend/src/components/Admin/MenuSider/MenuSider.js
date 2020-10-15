@@ -1,8 +1,8 @@
-import React from "react";
-import { Link, withRouter } from "react-router-dom";
-import { Layout, Menu } from "antd";
+import React from 'react';
+import { Link, withRouter } from 'react-router-dom';
+import { Layout, Menu } from 'antd';
 import Icon from '@ant-design/icons';
-import "./MenuSider.scss";
+import './MenuSider.scss';
 
 function MenuSider(props) {
   const { menuCollapsed, location } = props;
@@ -14,7 +14,7 @@ function MenuSider(props) {
         theme="dark"
         mode="inline"
         // defaultSelectedKeys={[location.pathname]}
-        defaultSelectedKeys={["/admin/users"]}
+        defaultSelectedKeys={['/admin/users']}
       >
         {/* <Menu.Item key="/admin">
           <Link to="/admin">
@@ -33,6 +33,12 @@ function MenuSider(props) {
             <Icon type="menu" />
             <span className="nac-text">Menú</span>
           </Link>
+          <Menu.Item key="/admin/courses">
+            <Link to="/admin/courses">
+              <Icon type="book" />
+              <span className="nac-text">Cursos</span>
+            </Link>
+          </Menu.Item>
         </Menu.Item>
       </Menu>
     </Sider>
