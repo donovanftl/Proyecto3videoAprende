@@ -44,7 +44,7 @@ function updateMenu(req, res){
   let menuData = req.body
   const params = req.params
 
-  Menu.findByIdAndUpdate(params.id, menuData (err, menuUpdate) => {
+  Menu.findByIdAndUpdate(params.id, menuData, (err, menuUpdate) => {
     if(err) {
       res.status(500).send({message: "Error del servidor"})
     } else {

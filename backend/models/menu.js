@@ -8,4 +8,4 @@ const MenuSchema = Schema({
  active: Boolean
 })
 
-module.exports = mongoose.model("Menu", MunuSchema)
+module.exports = mongoose.model("Menu", MenuSchema)

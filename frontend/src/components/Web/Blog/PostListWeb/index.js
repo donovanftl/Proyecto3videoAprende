@@ -1,0 +1,1 @@
+expor {default} from './PostListWeb'

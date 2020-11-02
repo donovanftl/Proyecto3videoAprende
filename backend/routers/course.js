@@ -9,4 +9,5 @@ api.post('add-course', [md_auth.ensureAuth], CourseController.addCourse);
 api.get('/get-courses', CourseController.getCourses);
 api.delete('/delete-course/:id', [md_auth.ensureAuth], CourseController.deleteCourses);
 api.put('/update-course:id', [md_auth.ensureAuth], CourseController.updateCourse);
+
 module.exports = api;
