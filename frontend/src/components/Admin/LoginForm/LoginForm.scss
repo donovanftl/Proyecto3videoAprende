@@ -1,47 +1,44 @@
-@import '../../../scss//index.scss'
+@import "../../../scss/index.scss";
 
 .login-form {
- .ant-form-item:last-of-type {
-  margin: 0
- }
-
- &__input {
-  .ant-input-prefix {
-   i {
-    form-size: 0em + 22 px / $defaultFontSize
-   }
+  .ant-form-item:last-of-type {
+    margin: 0;
   }
 
-  input {
-   font-size: 0em + 20px / $defaultFontSize;
-   padding: : 20px 20 px 20px 40px !important;
+  &__input {
+    .ant-input-prefix {
+      i {
+        form-size: 0em + 22px / $defaultFontSize;
+      }
+    }
 
-   &:focus {
-    border-color: $primary-color;
-    box-shadow: none;
-   }
-  }
- }
-
- &__button {
-  width: 100%;
-  font-size: 0em + 22px / $defaultFontSize;
-  background-color: $primary-color;
-  color: $font-light;
-  height: 42px;
-  margin-top: 20px;
-
-  &:hover {
-   background-color: $primary-color-hover;
-   color: $font-light
+    input {
+      font-size: 0em + 20px / $defaultFontSize;
+      padding: 20px 20px 20px 40px !important;
+      &:focus {
+        border-color: $primary-color;
+        box-shadow: none;
+      }
+    }
   }
 
-  &:focus,
-  &:active {
-   background-color: $primary-color;
-   color: $font-light;
-   border: 0;
-  }
- }
+  &__button {
+    width: 100%;
+    font-size: 0em + 22px / $defaultFontSize;
+    background-color: $primary-color;
+    color: $font-light;
+    height: 42px;
+    margin-top: 20px;
 
+    &:hover {
+      background-color: $primary-color-hover;
+      color: $font-light;
+    }
+    &:focus,
+    &:active {
+      background-color: $primary-color;
+      color: $font-light;
+      border: 0;
+    }
+  }
 }

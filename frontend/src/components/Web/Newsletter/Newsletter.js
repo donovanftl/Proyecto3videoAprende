@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Form, Icon, Input, Button, notification } from 'antd';
+import { Form, Input, Button, notification } from 'antd';
+import { UserOutlined } from '@ant-design/icons';
 import { suscribeNewsletterApi } from '../../../api/newsletter';
 
 import './Newsletter.scss';
@@ -7,7 +8,7 @@ import './Newsletter.scss';
 export default function Newsletter() {
   const [email, setEmail] = useState('');
 
-  const onSubmit = (e) => {
+  const onFinish = (e) => {
     e.preventDefault();
     const emailValid = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     const resultValidation = emailValid.test(email);
@@ -35,10 +36,10 @@ export default function Newsletter() {
   return (
     <div className="newsletter">
       <h3>Newsletter</h3>
-      <Form onSubmit={onSubmit}>
+      <Form onFinish={onFinish}>
         <Form.Item>
           <Input
-            prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,0.25)' }} />}
+            prefix={<UserOutlined style={{ color: 'rgba(0,0,0,0.25)' }} />}
             placeholder="Correo electronico"
             value={email}
             onChange={(e) => setEmail(e.target.value)}

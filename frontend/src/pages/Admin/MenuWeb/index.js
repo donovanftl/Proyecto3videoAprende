@@ -1,2 +1,1 @@
-export {default} from "./MenuWeb
-"
+export {default} from "./MenuWeb"

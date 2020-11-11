@@ -86,7 +86,7 @@ export function updateCourseApi(token, id, data) {
       'Content-Type': 'application',
       Authorization: token,
     },
-    body: JSON.stringify(course),
+    body: JSON.stringify(data),
   };
   return fetch(url, params)
     .then((response) => {

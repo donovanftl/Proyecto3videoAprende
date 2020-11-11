@@ -4,7 +4,7 @@ import { getCoursesApi } from '../../api/course';
 
 export default function Courses() {
   const [courses, setCourses] = useState([]);
-  const [reloadCourses, setReloadCourses] = useEffect(false);
+  const [reloadCourses, setReloadCourses] = useState(false);
 
   useEffect(() => {
     getCoursesApi().then((response) => {
@@ -19,4 +19,3 @@ export default function Courses() {
     </div>
   );
 }
-

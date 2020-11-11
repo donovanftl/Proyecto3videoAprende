@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Form, Icon, Input, Select, Button, Row, Col, notification } from 'antd';
+import { Form, Input, Select, Button, Row, Col, notification } from 'antd';
+import { UserOutlined, MailOutlined, LockOutlined } from '@ant-design/icons';
 import { signUpAdminApi } from '../../../../api/user';
 import { getAccessTokenApi } from '../../../../api/auth';
 
@@ -59,12 +60,12 @@ function AddForm(props) {
   const { Option } = Select;
 
   return (
-    <Form className="form-add" onSubmit={addUser}>
+    <Form className="form-add" onFinish={addUser}>
       <Row gutter={24}>
         <Col span={12}>
           <Form.Item>
             <Input
-              prefix={<Icon type="user" />}
+              prefix={<UserOutlined />}
               placeholder="Nombre"
               value={userData.name}
               onChange={(e) => setUserData({ ...userData, name: e.target.value })}
@@ -74,7 +75,7 @@ function AddForm(props) {
         <Col span={12}>
           <Form.Item>
             <Input
-              prefix={<Icon type="user" />}
+              prefix={<UserOutlined />}
               placeholder="Apellidos"
               value={userData.lastname}
               onChange={(e) => setUserData({ ...userData, lastname: e.target.value })}
@@ -87,7 +88,7 @@ function AddForm(props) {
         <Col span={12}>
           <Form.Item>
             <Input
-              prefix={<Icon type="mail" />}
+              prefix={<MailOutlined />}
               placeholder="Correlo electronico"
               value={userData.email}
               onChange={(e) => setUserData({ ...userData, email: e.target.value })}
@@ -113,7 +114,7 @@ function AddForm(props) {
         <Col span={12}>
           <Form.Item>
             <Input
-              prefix={<Icon type="lock" />}
+              prefix={<LockOutlined />}
               type="password"
               placeholder="Contraseña"
               value={userData.password}
@@ -124,7 +125,7 @@ function AddForm(props) {
         <Col span={12}>
           <Form.Item>
             <Input
-              prefix={<Icon type="lock" />}
+              prefix={<LockOutlined />}
               type="password"
               placeholder="Repetir contraseña"
               value={userData.repeatPassword}

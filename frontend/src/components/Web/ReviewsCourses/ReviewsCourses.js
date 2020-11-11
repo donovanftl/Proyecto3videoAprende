@@ -1,22 +1,21 @@
-import React from 'react'
-import { Row, Col, Card, Avatar } from 'antd'
+import React from 'react';
+import { Row, Col, Card, Avatar } from 'antd';
+import AvatarPersona from '../../../assets/img/png/monkey-avatar.png';
 
-import "./ReviewCourses.scss"
+import './ReviewsCourses.scss';
 
-export default function ReviewCourses() {
- return (
-  <Row className="reviews-courses">
-  <Row>
-    <Col lg={4} />
-    <Col lg={16} className="reviews-courses__title">
-      <h2>
-        Forma parte de los +35 mil estudiantes que estan aprendiendo con mis
-        cursos
-      </h2>
-    </Col>
-    <Col lg={4} />
-  </Row>
-  <Col lg={4} />
+export default function ReviewsCourses() {
+  return (
+    <Row className="reviews-courses">
+      <Row>
+        <Col lg={4} />
+        <Col lg={16} className="reviews-courses__title">
+          <h2>Forma parte de los +35 mil estudiantes que estan aprendiendo con mis cursos</h2>
+        </Col>
+        <Col lg={4} />
+      </Row>
+      <Row>
+        <Col lg={4} />
         <Col lg={16}>
           <Row className="row-cards">
             <Col md={8}>
@@ -84,12 +83,7 @@ function CardReview(props) {
   return (
     <Card className="reviews-courses__card">
       <p>{review}</p>
-      <Meta
-        avatar={<Avatar src={avatar} />}
-        title={name}
-        description={subtitle}
-      />
+      <Meta avatar={<Avatar src={avatar} />} title={name} description={subtitle} />
     </Card>
   );
 }
-  

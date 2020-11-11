@@ -3,7 +3,7 @@ import { Pagination as PaginationAntd } from 'antd';
 
 import './Pagination.scss';
 
-export default function Pagination() {
+export default function Pagination(props) {
   const { posts, location, history } = props;
   const currentPage = parseInt(posts.page);
 

@@ -8,7 +8,7 @@ import Pagination from '../../../Pagination';
 import { getPostsApi } from '../../../../api/post';
 import 'moment/locale/es';
 
-import './PostListWeb.scss';
+import './PostsListWeb.scss';
 
 export default function PostsListWeb(props) {
   const { location, history } = props;

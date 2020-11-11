@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Form, Icon, Input, Button, notification } from "antd";
+import { Form, Input, Button, notification } from "antd";
+import { FontSizeOutlined, LinkOutlined } from '@ant-design/icons';
 import { updateMenuApi } from "../../../../api/menu";
 import { getAccessTokenApi } from "../../../../api/auth";
 
@@ -57,7 +58,7 @@ function EditForm(props) {
     <Form className="form-edit" onSubmit={editMenu}>
       <Form.Item>
         <Input
-          prefix={<Icon type="font-size" />}
+          prefix={<FontSizeOutlined />}
           placeholder="Titulo"
           value={menuWebData.title}
           onChange={e =>
@@ -67,7 +68,7 @@ function EditForm(props) {
       </Form.Item>
       <Form.Item>
         <Input
-          prefix={<Icon type="link" />}
+          prefix={<LinkOutlined />}
           placeholder="URL"
           value={menuWebData.url}
           onChange={e =>

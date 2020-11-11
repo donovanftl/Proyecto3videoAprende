@@ -1,20 +1,12 @@
-import React, { useState, useEffect } from "react";
-import {
-  Row,
-  Col,
-  Form,
-  Icon,
-  Input,
-  Button,
-  DatePicker,
-  notification
-} from "antd";
-import moment from "moment";
-import { Editor } from "@tinymce/tinymce-react";
-import { getAccessTokenApi } from "../../../../api/auth";
-import { addPostApi, updatePostApi } from "../../../../api/post";
+import React, { useState, useEffect } from 'react';
+import { Row, Col, Form, Input, Button, DatePicker, notification } from 'antd';
+import { FontSizeOutlined, LinkOutlined } from '@ant-design/icons';
+import moment from 'moment';
+import { Editor } from '@tinymce/tinymce-react';
+import { getAccessTokenApi } from '../../../../api/auth';
+import { addPostApi, updatePostApi } from '../../../../api/post';
 
-import "./AddEditPostForm.scss";
+import './AddEditPostForm.scss';
 
 export default function AddEditPostForm(props) {
   const { setIsVisibleModal, setReloadPosts, post } = props;
@@ -28,13 +20,13 @@ export default function AddEditPostForm(props) {
     }
   }, [post]);
 
-  const processPost = e => {
+  const processPost = (e) => {
     e.preventDefault();
     const { title, url, description, date } = postData;
 
     if (!title || !url || !description || !date) {
-      notification["error"]({
-        message: "Todos los campos son obligatorios."
+      notification['error']({
+        message: 'Todos los campos son obligatorios.',
       });
     } else {
       if (!post) {
@@ -49,18 +41,18 @@ export default function AddEditPostForm(props) {
     const token = getAccessTokenApi();
 
     addPostApi(token, postData)
-      .then(response => {
-        const typeNotification = response.code === 200 ? "success" : "warning";
+      .then((response) => {
+        const typeNotification = response.code === 200 ? 'success' : 'warning';
         notification[typeNotification]({
-          message: response.message
+          message: response.message,
         });
         setIsVisibleModal(false);
         setReloadPosts(true);
         setPostData({});
       })
       .catch(() => {
-        notification["error"]({
-          message: "Error del servidor."
+        notification['error']({
+          message: 'Error del servidor.',
         });
       });
   };
@@ -68,18 +60,18 @@ export default function AddEditPostForm(props) {
   const updatePost = () => {
     const token = getAccessTokenApi();
     updatePostApi(token, post._id, postData)
-      .then(response => {
-        const typeNotification = response.code === 200 ? "success" : "warning";
+      .then((response) => {
+        const typeNotification = response.code === 200 ? 'success' : 'warning';
         notification[typeNotification]({
-          message: response.message
+          message: response.message,
         });
         setIsVisibleModal(false);
         setReloadPosts(true);
         setPostData({});
       })
       .catch(() => {
-        notification["error"]({
-          message: "Error del servidor."
+        notification['error']({
+          message: 'Error del servidor.',
         });
       });
   };
@@ -104,35 +96,35 @@ function AddEditForm(props) {
       <Row gutter={24}>
         <Col span={8}>
           <Input
-            prefix={<Icon type="font-size" />}
+            prefix={<FontSizeOutlined />}
             placeholder="Titulo"
             value={postData.title}
-            onChange={e => setPostData({ ...postData, title: e.target.value })}
+            onChange={(e) => setPostData({ ...postData, title: e.target.value })}
           />
         </Col>
         <Col span={8}>
           <Input
-            prefix={<Icon type="link" />}
+            prefix={<LinkOutlined />}
             placeholder="url"
             value={postData.url}
-            onChange={e =>
+            onChange={(e) =>
               setPostData({
                 ...postData,
-                url: transformTextToUrl(e.target.value)
+                url: transformTextToUrl(e.target.value),
               })
             }
           />
         </Col>
         <Col span={8}>
           <DatePicker
-            style={{ width: "100%" }}
+            style={{ width: '100%' }}
             format="DD/MM/YYYY HH:mm:ss"
             placeholder="Fecha de publicación"
             value={postData.date && moment(postData.date)}
             onChange={(e, value) =>
               setPostData({
                 ...postData,
-                date: moment(value, "DD/MM/YYYY HH:mm:ss").toISOString()
+                date: moment(value, 'DD/MM/YYYY HH:mm:ss').toISOString(),
               })
             }
           />
@@ -140,33 +132,31 @@ function AddEditForm(props) {
       </Row>
 
       <Editor
-        value={postData.description ? postData.description : ""}
+        value={postData.description ? postData.description : ''}
         init={{
           height: 400,
           menubar: true,
           plugins: [
-            "advlist autolink lists link image charmap print preview anchor",
-            "searchreplace visualblocks code fullscreen",
-            "insertdatetime media table paste code help wordcount"
+            'advlist autolink lists link image charmap print preview anchor',
+            'searchreplace visualblocks code fullscreen',
+            'insertdatetime media table paste code help wordcount',
           ],
           toolbar:
-            "undo redo | formatselect | bold italic backcolor | \
+            'undo redo | formatselect | bold italic backcolor | \
              alignleft aligncenter alignright alignjustify | \
-             bullist numlist outdent indent | removeformat | help"
+             bullist numlist outdent indent | removeformat | help',
         }}
-        onBlur={e =>
-          setPostData({ ...postData, description: e.target.getContent() })
-        }
+        onBlur={(e) => setPostData({ ...postData, description: e.target.getContent() })}
       />
 
       <Button type="primary" htmlType="submit" className="btn-submit">
-        {post ? "Actualizar post" : "Crear post"}
+        {post ? 'Actualizar post' : 'Crear post'}
       </Button>
     </Form>
   );
 }
 
 function transformTextToUrl(text) {
-  const url = text.replace(" ", "-");
+  const url = text.replace(' ', '-');
   return url.toLowerCase();
 }

@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { Form, Icon, Input, Button, notification } from "antd";
-import { getAccessTokenApi } from "../../../../api/auth";
-import { addCourseApi, updateCourseApi } from "../../../../api/course";
+import React, { useState, useEffect } from 'react';
+import { Form, Input, Button, notification } from 'antd';
+import { KeyOutlined, LinkOutlined, GiftOutlined, DollarOutlined } from '@ant-design/icons';
+import { getAccessTokenApi } from '../../../../api/auth';
+import { addCourseApi, updateCourseApi } from '../../../../api/course';
 
-import "./AddEditCourseForm.scss";
+import './AddEditCourseForm.scss';
 
 export default function AddEditCourseForm(props) {
   const { setIsVisibleModal, setReloadCourses, course } = props;
@@ -13,53 +14,52 @@ export default function AddEditCourseForm(props) {
     course ? setCourseData(course) : setCourseData({});
   }, [course]);
 
-  const addCourse = e => {
+  const addCourse = (e) => {
     e.preventDefault();
 
     if (!courseData.idCourse) {
-      notification["error"]({
-        message: "El id del curso es obligatorio"
+      notification['error']({
+        message: 'El id del curso es obligatorio',
       });
     } else {
       const accessToken = getAccessTokenApi();
 
       addCourseApi(accessToken, courseData)
-        .then(response => {
-          const typeNotification =
-            response.code === 200 ? "success" : "warning";
+        .then((response) => {
+          const typeNotification = response.code === 200 ? 'success' : 'warning';
           notification[typeNotification]({
-            message: response.message
+            message: response.message,
           });
           setIsVisibleModal(false);
           setReloadCourses(true);
           setCourseData({});
         })
         .catch(() => {
-          notification["error"]({
-            message: "Error del servidor, intentelo más tarde."
+          notification['error']({
+            message: 'Error del servidor, intentelo más tarde.',
           });
         });
     }
   };
 
-  const updateCourse = e => {
+  const updateCourse = (e) => {
     e.preventDefault();
 
     const accessToken = getAccessTokenApi();
 
     updateCourseApi(accessToken, course._id, courseData)
-      .then(response => {
-        const typeNotification = response.code === 200 ? "success" : "warning";
+      .then((response) => {
+        const typeNotification = response.code === 200 ? 'success' : 'warning';
         notification[typeNotification]({
-          message: response.message
+          message: response.message,
         });
         setIsVisibleModal(false);
         setReloadCourses(true);
         setCourseData({});
       })
       .catch(() => {
-        notification["error"]({
-          message: "Error del servidor, intentelo más tarde."
+        notification['error']({
+          message: 'Error del servidor, intentelo más tarde.',
         });
       });
   };
@@ -81,54 +81,45 @@ function AddEditForm(props) {
   const { course, addCourse, updateCourse, courseData, setCourseData } = props;
 
   return (
-    <Form
-      className="form-add-edit"
-      onSubmit={course ? updateCourse : addCourse}
-    >
+    <Form className="form-add-edit" onSubmit={course ? updateCourse : addCourse}>
       <Form.Item>
         <Input
-          prefix={<Icon type="key" />}
+          prefix={<KeyOutlined />}
           placeholder="ID del curso"
           value={courseData.idCourse}
-          onChange={e =>
-            setCourseData({ ...courseData, idCourse: e.target.value })
-          }
+          onChange={(e) => setCourseData({ ...courseData, idCourse: e.target.value })}
           disabled={course ? true : false}
         />
       </Form.Item>
       <Form.Item>
         <Input
-          prefix={<Icon type="link" />}
+          prefix={<LinkOutlined />}
           placeholder="Url del curso"
           value={courseData.link}
-          onChange={e => setCourseData({ ...courseData, link: e.target.value })}
+          onChange={(e) => setCourseData({ ...courseData, link: e.target.value })}
         />
       </Form.Item>
       <Form.Item>
         <Input
-          prefix={<Icon type="gift" />}
+          prefix={<GiftOutlined />}
           placeholder="Cupon de descuento"
           value={courseData.coupon}
-          onChange={e =>
-            setCourseData({ ...courseData, coupon: e.target.value })
-          }
+          onChange={(e) => setCourseData({ ...courseData, coupon: e.target.value })}
         />
       </Form.Item>
       <Form.Item>
         <Input
-          prefix={<Icon type="dollar" />}
+          prefix={<DollarOutlined />}
           placeholder="Precio del curso"
           value={courseData.price}
-          onChange={e =>
-            setCourseData({ ...courseData, price: e.target.value })
-          }
+          onChange={(e) => setCourseData({ ...courseData, price: e.target.value })}
         />
       </Form.Item>
       <Form.Item>
         <Button type="primary" htmlType="submit" className="btn-submit">
-          {course ? "Actualizar curso" : "Crear curso"}
+          {course ? 'Actualizar curso' : 'Crear curso'}
         </Button>
       </Form.Item>
     </Form>
   );
-} 
+}

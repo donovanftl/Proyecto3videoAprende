@@ -1,8 +1,17 @@
-import React from "react";
-import { Row, Col, Icon } from "antd";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Row, Col } from 'antd';
+import {
+  BookOutlined,
+  CodeOutlined,
+  DatabaseOutlined,
+  RightCircleOutlined,
+  HddOutlined,
+  AppstoreOutlined,
+  UserOutlined,
+  RightOutlined,
+} from '@ant-design/icons';
 
-import "./NavigationFooter.scss";
+import './NavigationFooter.scss';
 
 export default function NavigationFooter() {
   return (
@@ -25,22 +34,22 @@ function RenderListLeft() {
     <ul>
       <li>
         <a href="#">
-          <Icon type="book" /> Cursos Online
+          <BookOutlined /> Cursos Online
         </a>
       </li>
       <li>
         <a href="#">
-          <Icon type="code" /> Desarrollo Web
+          <CodeOutlined /> Desarrollo Web
         </a>
       </li>
       <li>
         <a href="#">
-          <Icon type="database" /> Base de Datos
+          <DatabaseOutlined /> Base de Datos
         </a>
       </li>
       <li>
         <a href="#">
-          <Icon type="right" /> Politica de Privacidad
+          <RightCircleOutlined /> Politica de Privacidad
         </a>
       </li>
     </ul>
@@ -52,22 +61,22 @@ function RenderListRight() {
     <ul>
       <li>
         <a href="#">
-          <Icon type="hdd" /> Sistemas / Servidores
+          <HddOutlined /> Sistemas / Servidores
         </a>
       </li>
       <li>
         <a href="#">
-          <Icon type="appstore" /> CMS
+          <AppstoreOutlined /> CMS
         </a>
       </li>
       <li>
         <a href="#">
-          <Icon type="user" /> Porfolio
+          <UserOutlined /> Porfalio
         </a>
       </li>
       <li>
         <a href="#">
-          <Icon type="right" /> Política de Cookies
+          <RightOutlined /> Política de Cookies
         </a>
       </li>
     </ul>

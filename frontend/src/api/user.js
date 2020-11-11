@@ -1,7 +1,6 @@
-import { message } from 'antd';
 import { basePath, apiVersion } from './config';
 
-export function signUpApi() {
+export function signUpApi(data) {
   const url = `${basePath}/S{apiVersion}/sign-up`;
   const params = {
     method: 'POST',
@@ -98,7 +97,7 @@ export function getUsersActiveApi(token, status) {
 }
 
 export function uploadAvatarApi(token, avatar, userId) {
-  const url = `${basePAth}/${apiVersion}/upload-avatar/${userId}`;
+  const url = `${basePath}/${apiVersion}/upload-avatar/${userId}`;
 
   const formData = new FormData();
   formData.append('avatar', avatar, avatar.name);

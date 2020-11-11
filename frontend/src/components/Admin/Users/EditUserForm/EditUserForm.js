@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Avatar, Form, Icon, Input, Select, Button, Row, Col, notification } from 'antd';
+import { Avatar, Form, Input, Select, Button, Row, Col, notification } from 'antd';
+import { UserOutlined, MailOutlined, LockOutlined } from '@ant-design/icons';
 import { useDropzone } from 'react-dropzone';
 import NoAvatar from '../../../../assets/img/png/no-avatar.png';
 import { updateUserApi, uploadAvatarApi, getAvatarApi } from '../../../../api/user';
 import { getAccessTokenApi } from '../../../../api/auth';
-import { getAvatarApi } from '../../../../api/user';
 
 import './EditUserForm.scss';
 
@@ -145,7 +145,7 @@ function EditForm(props) {
         <Col span={12}>
           <Form.Item>
             <Input
-              prefix={<Icon type="user" />}
+              prefix={<UserOutlined />}
               placeholder="Nombre"
               value={userData.name}
               onChange={(e) => setUserData({ ...userData, name: e.target.value })}
@@ -155,7 +155,7 @@ function EditForm(props) {
         <Col span={12}>
           <Form.Item>
             <Input
-              prefix={<Icon type="user" />}
+              prefix={<UserOutlined />}
               placeholder="Apellidos"
               value={userData.lastname}
               onChange={(e) => setUserData({ ...userData, lastname: e.target.value })}
@@ -168,7 +168,7 @@ function EditForm(props) {
         <Col span={12}>
           <Form.Item>
             <Input
-              prefix={<Icon type="mail" />}
+              prefix={<MailOutlined />}
               placeholder="Correo electronico"
               value={userData.email}
               onChange={(e) => setUserData({ ...userData, email: e.target.value })}
@@ -194,7 +194,7 @@ function EditForm(props) {
         <Col span={12}>
           <Form.Item>
             <Input
-              prefix={<Icon type="lock" />}
+              prefix={<LockOutlined />}
               type="password"
               placeholder="Contraseña"
               onChange={(e) => setUserData({ ...userData, password: e.target.value })}
@@ -204,7 +204,7 @@ function EditForm(props) {
         <Col span={12}>
           <Form.Item>
             <Input
-              prefix={<Icon type="lock" />}
+              prefix={<LockOutlined />}
               type="password"
               placeholder="Repetir contraseña"
               onChange={(e) => setUserData({ ...userData, repeatPassword: e.target.value })}
