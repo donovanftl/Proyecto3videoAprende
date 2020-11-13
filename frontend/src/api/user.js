@@ -1,7 +1,7 @@
 import { basePath, apiVersion } from './config';
 
 export function signUpApi(data) {
-  const url = `${basePath}/S{apiVersion}/sign-up`;
+  const url = `${basePath}/${apiVersion}/sign-up`;
   const params = {
     method: 'POST',
     body: JSON.stringify(data),
@@ -16,23 +16,17 @@ export function signUpApi(data) {
     })
     .then((result) => {
       if (result.user) {
-        return {
-          ok: false,
-          message: result.message,
-        };
+        return { ok: true, message: 'Usuario creado correctamente' };
       }
-      return {
-        ok: false,
-        message: result.message,
-      };
+      return { ok: false, message: result.message };
     })
     .catch((err) => {
-      return err.message;
+      return { ok: false, message: err.message };
     });
 }
 
 export function signInApi(data) {
-  const url = `${basePath}/${apiVersion}/signin`;
+  const url = `${basePath}/${apiVersion}/sign-in`;
   const params = {
     method: 'POST',
     body: JSON.stringify(data),
@@ -40,17 +34,21 @@ export function signInApi(data) {
       'Content-Type': 'application/json',
     },
   };
+
   return fetch(url, params)
     .then((response) => {
       return response.json();
     })
     .then((result) => {
+      console.log(result);
+
       return result;
     })
     .catch((err) => {
       return err.message;
     });
 }
+
 export function getUsersApi(token) {
   const url = `${basePath}/${apiVersion}/users`;
 
@@ -73,6 +71,7 @@ export function getUsersApi(token) {
       return err.message;
     });
 }
+
 export function getUsersActiveApi(token, status) {
   const url = `${basePath}/${apiVersion}/users-active?active=${status}`;
 
@@ -109,6 +108,7 @@ export function uploadAvatarApi(token, avatar, userId) {
       Authorization: token,
     },
   };
+
   return fetch(url, params)
     .then((response) => {
       return response.json();
@@ -120,6 +120,7 @@ export function uploadAvatarApi(token, avatar, userId) {
       return err.message;
     });
 }
+
 export function getAvatarApi(avatarName) {
   const url = `${basePath}/${apiVersion}/get-avatar/${avatarName}`;
 
@@ -169,17 +170,19 @@ export function activateUserApi(token, userId, status) {
       active: status,
     }),
   };
+
   return fetch(url, params)
     .then((response) => {
       return response.json();
     })
     .then((result) => {
-      return result;
+      return result.message;
     })
     .catch((err) => {
       return err.message;
     });
 }
+
 export function deleteUserApi(token, userId) {
   const url = `${basePath}/${apiVersion}/delete-user/${userId}`;
 
@@ -190,6 +193,7 @@ export function deleteUserApi(token, userId) {
       Authorization: token,
     },
   };
+
   return fetch(url, params)
     .then((response) => {
       return response.json();
@@ -206,13 +210,14 @@ export function signUpAdminApi(token, data) {
   const url = `${basePath}/${apiVersion}/sign-up-admin`;
 
   const params = {
-    method: 'DELETE',
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       Authorization: token,
     },
     body: JSON.stringify(data),
   };
+
   return fetch(url, params)
     .then((response) => {
       return response.json();

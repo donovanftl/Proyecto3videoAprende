@@ -4,7 +4,7 @@ import { Layout } from 'antd';
 import useAuth from '../hooks/useAuth';
 import MenuTop from '../components/Admin/MenuTop';
 import MenuSider from '../components/Admin/MenuSider';
-import AdminSignIn from '../pages/Admin/SignIn/SignIn';
+import AdminSignIn from '../pages/Admin/SignIn';
 
 import './LayoutAdmin.scss';
 
@@ -33,12 +33,13 @@ export default function LayoutAdmin(props) {
           <Content className="layout-admin__content">
             <LoadRoutes routes={routes} />
           </Content>
-          <Footer className="layout-admin__footer">Donovan F. Torres</Footer>
+          <Footer className="layout-admin__footer">Agustin Navarro Galdon</Footer>
         </Layout>
       </Layout>
     );
   }
-  return null
+
+  return null;
 }
 
 function LoadRoutes({ routes }) {

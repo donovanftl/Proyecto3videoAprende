@@ -92,7 +92,7 @@ function AddEditForm(props) {
   const { postData, setPostData, post, processPost } = props;
 
   return (
-    <Form className="add-edit-post-form" layout="inline" onSubmit={processPost}>
+    <Form className="add-edit-post-form" layout="inline" onFinish={processPost}>
       <Row gutter={24}>
         <Col span={8}>
           <Input

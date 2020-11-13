@@ -110,7 +110,7 @@ export default function RegisterForm() {
   };
 
   return (
-    <Form className="register-form" onSubmit={register} onChange={changeForm}>
+    <Form className="register-form" onFinish={register} onChange={changeForm}>
       <Form.Item>
         <Input
           prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}

@@ -81,7 +81,7 @@ function AddEditForm(props) {
   const { course, addCourse, updateCourse, courseData, setCourseData } = props;
 
   return (
-    <Form className="form-add-edit" onSubmit={course ? updateCourse : addCourse}>
+    <Form className="form-add-edit" onFinish={course ? updateCourse : addCourse}>
       <Form.Item>
         <Input
           prefix={<KeyOutlined />}

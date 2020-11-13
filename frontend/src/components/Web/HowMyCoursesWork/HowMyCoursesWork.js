@@ -1,14 +1,5 @@
 import React from 'react';
 import { Row, Col, Card } from 'antd';
-import {
-  ClockCircleOutlined,
-  KeyOutlined,
-  UserOutlined,
-  MessageOutlined,
-  DollarCircleOutlined,
-  CheckCircleOutlined,
-} from '@ant-design/icons';
-
 import './HowMyCoursesWork.scss';
 
 export default function HowMyCoursesWork() {

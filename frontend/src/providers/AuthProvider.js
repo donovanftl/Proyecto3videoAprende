@@ -6,19 +6,23 @@ export const AuthContext = createContext();
 
 export default function AuthProvider(props) {
   const { children } = props;
-  const [user, serUser] = useState({
+  const [user, setUser] = useState({
     user: null,
     isLoading: true,
   });
+
   useEffect(() => {
-    checkUserLogin(serUser);
+    checkUserLogin(setUser);
   }, []);
+
   return <AuthContext.Provider value={user}>{children}</AuthContext.Provider>;
 }
+
 function checkUserLogin(setUser) {
   const accessToken = getAccessTokenApi();
+
   if (!accessToken) {
-    const refreshToken = getRefreshTokenApi;
+    const refreshToken = getRefreshTokenApi();
 
     if (!refreshToken) {
       logout();
