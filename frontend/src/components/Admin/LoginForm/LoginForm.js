@@ -43,7 +43,7 @@ export default function LoginForm() {
   };
 
   return (
-    <Form className="login-form" onChange={changeForm} onSubmit={login}>
+    <Form className="login-form" onChange={changeForm} onFinish={login}>
       <Form.Item>
         <Input
           prefix={<UserOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
