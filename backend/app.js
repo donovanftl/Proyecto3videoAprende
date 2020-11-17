@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+var cors = require('cors');
 
 const app = express();
 const { API_VERSION } = require('./config');
@@ -12,6 +13,7 @@ const newsletterRoutes = require('./routers/newsletter');
 const courseRoutes = require('./routers/course');
 const postRoutes = require('./routers/post');
 
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
