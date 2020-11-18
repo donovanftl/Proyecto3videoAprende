@@ -15,8 +15,6 @@ export default function AddEditCourseForm(props) {
   }, [course]);
 
   const addCourse = (e) => {
-    e.preventDefault();
-
     if (!courseData.idCourse) {
       notification['error']({
         message: 'El id del curso es obligatorio',
@@ -43,8 +41,6 @@ export default function AddEditCourseForm(props) {
   };
 
   const updateCourse = (e) => {
-    e.preventDefault();
-
     const accessToken = getAccessTokenApi();
 
     updateCourseApi(accessToken, course._id, courseData)

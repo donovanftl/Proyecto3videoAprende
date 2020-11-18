@@ -15,8 +15,6 @@ export default function EditMenuWebForm(props) {
   }, [menu]);
 
   const editMenu = (event) => {
-    event.preventDefault();
-
     if (!menuWebData.title || !menuWebData.url) {
       notification['error']({
         message: 'Todos los campos son obligatorios.',

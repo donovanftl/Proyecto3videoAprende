@@ -20,7 +20,6 @@ export default function LoginForm() {
   };
 
   const login = async (e) => {
-    e.preventDefault();
     const result = await signInApi(inputs);
 
     if (result.message) {

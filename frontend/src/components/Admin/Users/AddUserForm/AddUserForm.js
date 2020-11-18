@@ -11,7 +11,6 @@ export default function EditUserForm(props) {
   const [userData, setUserData] = useState({});
 
   const addUser = (event) => {
-    event.preventDefault();
 
     if (
       !userData.name ||

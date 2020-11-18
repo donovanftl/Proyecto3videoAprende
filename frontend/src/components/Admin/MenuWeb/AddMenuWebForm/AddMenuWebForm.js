@@ -11,7 +11,6 @@ export default function AddMenuWebForm(props) {
   const [menuWebData, setMenuWebData] = useState({});
 
   const addMenu = (event) => {
-    event.preventDefault();
     let finalData = {
       title: menuWebData.title,
       url: (menuWebData.http ? menuWebData.http : 'http://') + menuWebData.url,

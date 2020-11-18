@@ -41,7 +41,6 @@ export default function EditUserForm(props) {
   }, [avatar]);
 
   const updateUser = (e) => {
-    e.preventDefault();
     const token = getAccessTokenApi();
     let userUpdate = userData;
 
