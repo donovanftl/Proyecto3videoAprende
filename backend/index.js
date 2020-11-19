@@ -7,7 +7,7 @@ mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 
 mongoose.connect(
-  `mongodb+srv://DonovanT:hans@cluster0.kiojd.mongodb.net/<dbname>?retryWrites=true&w=majority`,
+  `mongodb+srv://DonovanT:hans@cluster0.kiojd.mongodb.net/webpersonal?retryWrites=true&w=majority`,
   { useNewUrlParser: true, useUnifiedTopology: true },
   (err, res) => {
     if (err) {
