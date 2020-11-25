@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-var cors = require('cors');
+let cors = require('cors');
 
 const app = express();
 const { API_VERSION } = require('./config');
